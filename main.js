@@ -1,5 +1,9 @@
 const inputs = process.argv.slice(2);
 
+if (inputs == null || inputs.length == 0) {
+    throw new Error("Please put in at least one value");
+}
+
 const results = inputs.map((value) => {
     return numberToPhonetic(value);
 })
@@ -36,7 +40,9 @@ function mutateDigit(digit) {
             return 'Seven';
         case '8':
             return 'Eight';
+        case '9':
+            return 'Nine'
         default:
-            return 'Nine';
+            throw new Error("Invalid Digit, must be from 0-9");
     }
 }
